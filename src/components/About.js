@@ -16,7 +16,7 @@ export default function About() {
     const [btnText, setBtnText] = useState('Enable Dark Mode')
 
     const changeTheme = () => {
-        if(mode.color == 'black') {
+        if(mode.color === 'black') {
             setMode(darkMode)
             setBtnText('Enable Light Mode')
         } else {
