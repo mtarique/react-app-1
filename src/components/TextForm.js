@@ -1,17 +1,19 @@
 import React, { useState} from 'react'
 
-export default function TextForm() {
+export default function TextForm(props) {
     const [text, setText] = useState(""); 
 
     // To uppercase
     const handleUpClick = () => {
         // setText("You have clicked on Convert to uppercase button "); 
         setText(text.toUpperCase())
+        props.showAlert("Text converted to uppercase", "success")
     }
 
     // To lowercase
     const handleLoClick = () => {
         setText(text.toLowerCase())
+        props.showAlert("Text converted to lowercase", "success")
     }
 
     // Write own text
@@ -22,6 +24,7 @@ export default function TextForm() {
     // Clear
     const handleClClick = () => {
         setText("")
+        props.showAlert("Textbox cleared", "success")
     }
 
     // Copy
@@ -29,12 +32,14 @@ export default function TextForm() {
         let textToCopy = document.getElementById('myBox');
         textToCopy.select()
         navigator.clipboard.writeText(textToCopy.value); 
+        props.showAlert("Text copied!", "success")
     }
 
     // Remove extra space
     const handleRsClick = () => {
         let textWithRemovedSpace = text.split(/[ ]+/); 
         setText(textWithRemovedSpace.join(" ")); 
+        props.showAlert("Extra spaces has been successfully removed", "success")
     }
 
     return (
@@ -54,7 +59,7 @@ export default function TextForm() {
             </div>
             <div className="container">
                 <h2>Your text summary</h2>
-                <p>{text.split(" ").length} words and {text.length} characters</p>
+                <p>{(text === "") ? 0 : text.trim().split(" ").length} words and {text.length} characters</p>
                 <p>Reading time {0.008 * text.split(" ").length} minutes</p>
                 <h2>Preview</h2>
                 <p>{(text.length > 0) ? text : "Enter something in the textbox to preview it here!"}</p>
