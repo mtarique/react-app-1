@@ -1,7 +1,7 @@
 import React, { useState} from 'react'
 
 export default function TextForm() {
-    const [text, setText] = useState("Enter your text here"); 
+    const [text, setText] = useState(""); 
 
     // To uppercase
     const handleUpClick = () => {
@@ -57,7 +57,7 @@ export default function TextForm() {
                 <p>{text.split(" ").length} words and {text.length} characters</p>
                 <p>Reading time {0.008 * text.split(" ").length} minutes</p>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{(text.length > 0) ? text : "Enter something in the textbox to preview it here!"}</p>
             </div>
         </>
     )
