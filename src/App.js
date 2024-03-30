@@ -32,16 +32,20 @@ function App() {
       setMode('dark'); 
       document.body.style.backgroundColor = "black"; 
       document.body.style.color = "white"; 
-      document.getElementsByTagName('textarea')[0].style.backgroundColor = "#212529"
-      document.getElementsByTagName('textarea')[0].style.color = "white" 
+      if(document.getElementsByTagName('textarea').length > 0) {
+        document.getElementsByTagName('textarea')[0].style.backgroundColor = "#212529"
+        document.getElementsByTagName('textarea')[0].style.color = "white" 
+      }
       showAlert("Dark mode enabled", "success")
       document.title = 'TextUtils - Dark Mode'
     } else {
       setMode('light'); 
       document.body.style.backgroundColor = "white"; 
       document.body.style.color = "black"; 
-      document.getElementsByTagName('textarea')[0].style.backgroundColor = "white"
-      document.getElementsByTagName('textarea')[0].style.color = "black"
+      if(document.getElementsByTagName('textarea').length > 0) {
+        document.getElementsByTagName('textarea')[0].style.backgroundColor = "white"
+        document.getElementsByTagName('textarea')[0].style.color = "black"
+      }
       showAlert("Light mode enabled", "success")
       document.title = 'TextUtils - Light Mode'
     }
