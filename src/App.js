@@ -1,10 +1,15 @@
 // import logo from './logo.svg';
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import Alert from './components/Alert'; 
 import TextForm from './components/TextForm';
 import React, {useState} from 'react'; 
+import {
+  BrowserRouter,  
+  Route, 
+  Routes
+} from 'react-router-dom'
 
 // let name = "Tarique"; 
 function App() {
@@ -44,12 +49,16 @@ function App() {
 
   return (
     <>
-		<Navbar title="TextUtils" mode={mode} switchMode={switchMode} />
-		<div className='container mt-3'>
-      <Alert alert={alert}/>
-		  <TextForm showAlert={showAlert} />
-      {/* <About /> */}
-		</div>
+    <BrowserRouter>
+      <Navbar title="TextUtils" mode={mode} switchMode={switchMode} />
+      <div className='container mt-3'>
+        <Alert alert={alert}/>
+        <Routes>
+          <Route exact path="/" element={<TextForm showAlert={showAlert} />}></Route>
+          <Route exact path="/about" element={<About />}></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
     </>
   );
 }
