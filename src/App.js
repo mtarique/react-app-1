@@ -37,7 +37,7 @@ function App() {
         document.getElementsByTagName('textarea')[0].style.color = "white" 
       }
       showAlert("Dark mode enabled", "success")
-      document.title = 'TextUtils - Dark Mode'
+      // document.title = 'TextUtils - Dark Mode'
     } else {
       setMode('light'); 
       document.body.style.backgroundColor = "white"; 
@@ -47,7 +47,7 @@ function App() {
         document.getElementsByTagName('textarea')[0].style.color = "black"
       }
       showAlert("Light mode enabled", "success")
-      document.title = 'TextUtils - Light Mode'
+      // document.title = 'TextUtils - Light Mode'
     }
   }
 
@@ -59,7 +59,7 @@ function App() {
         <Alert alert={alert}/>
         <Routes>
           <Route exact path="/" element={<TextForm showAlert={showAlert} />}></Route>
-          <Route exact path="/about" element={<About />}></Route>
+          <Route exact path="/about" element={<About mode={mode} />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
